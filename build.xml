@@ -1,0 +1,54 @@
+<project name="ant proj" default="all">
+	<property name = "myproj" value="D:/myproj" />
+	<property name = "src" value="${myproj}/src" />
+	<property name = "bin" value="${myproj}/bin" />
+	<property name = "test" value="${myproj}/test" />
+	<property name = "report" value="${myproj}/report" />	
+	<property name = "docs" value="${myproj}/docs" />
+	<property name = "deploy" value="${myproj}/deploy" />	
+	
+	<target name="init" depends="clean">
+			<echo>Initialisation !!!!</echo>
+			<mkdir dir="${myproj}"/>
+			<mkdir dir="${src}"/>
+			<mkdir dir="${bin}"/>
+			<mkdir dir="${test}"/>
+			<mkdir dir="${report}"/>
+			<mkdir dir="${docs}"/>
+			<mkdir dir="${deploy}"/>
+	</target>
+	<target name="clean">
+			<echo>Cleaning !!!!</echo>
+	</target>
+	<target name="copy" depends="init">
+			<echo message="Copying code from some source directory !!"></echo>
+			<copy todir="${src}">
+				<fileset dir="src" includes="**/*.java"/>
+			</copy>
+	</target>
+	<target name="compile" depends="copy">
+			<echo message="Compiling source code !!! "></echo>
+			
+	</target>
+	<target name="test" depends="compile">
+			<echo message="Testing code using junit case !!! "></echo>
+	</target>
+	<target name="report" depends="test">
+			<echo message="Generating reports !!! "></echo>
+	</target>
+	<target name="docs" depends="report">
+				<echo message="Generating java docs !!! "></echo>
+	</target>
+	<target name="package" depends="docs">
+				<echo message="packaging  !!! "></echo>
+	</target>
+	<target name="deploy" depends="package">
+			<echo>Deploying !!!!</echo>
+	</target>	
+	<target name="all" depends="deploy">
+			<echo>Welcome to ANT script !!!!</echo>
+	</target>
+			
+				
+		
+</project>
