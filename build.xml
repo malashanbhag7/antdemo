@@ -6,6 +6,8 @@
 	<property name = "report" value="${myproj}/report" />	
 	<property name = "docs" value="${myproj}/docs" />
 	<property name = "deploy" value="${myproj}/deploy" />	
+	<property environment="env"/>
+	<property name="label" value="${env.JOB_NAME}-${env.BUILD_NUMBER}"/>
 	
 	<target name="init" depends="clean">
 			<echo>Initialisation !!!!</echo>
